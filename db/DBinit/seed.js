@@ -1,5 +1,6 @@
 const fs = require('fs');
-const MovieSchema = require('../index.js');
+const mongoose = require('mongoose');
+const MovieSchema = require('../schema.js');
 const videos = require('./youtubeLinks.js');
 
 const mockarooData = fs.readFileSync('./MOCK_DATA.json');
