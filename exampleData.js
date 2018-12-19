@@ -7,7 +7,7 @@ const exampleData = [
       Standard: ['1:30 PM', '2:30 PM'],
       Imax: []
     },
-    Theater_Details: {
+    TheaterDetails: {
       Standard: [
         'Closed Caption',
         'Accessibility Devices Available',
@@ -26,15 +26,18 @@ const exampleData = [
       Description: 'long string',
       Rating: 'PG-13 (for sequences of sci-fi action violence)',
       Genre: 'Action & Adventure, Science Fiction & Fantasy',
-      Directed_By: 'Travis Knight',
-      Written_By: 'Christina Hodson',
+      DirectedBy: 'Travis Knight',
+      WrittenBy: 'Christina Hodson',
       ReleaseDate: ' Dec 21, 2018  wide',
       Runtime: '114 minutes',
       Studio: 'Paramount Pictures'
     },
-    Cast: {
-      Hailee_Steinfeld: 'image url',
-      John_Cena: 'image url'
-    }
+    Cast: [
+      { Name: 'Selig Humbert', Photo: 'https://picsum.photos/300/300/?random' },
+      {
+        Name: 'Rodolphe Hyndson',
+        Photo: 'https://picsum.photos/300/300/?random'
+      }
+    ]
   }
 ];
