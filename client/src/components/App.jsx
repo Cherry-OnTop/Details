@@ -1,4 +1,12 @@
 import React from 'react';
 import { Component } from 'react';
 
-class App extends Component {}
+class App extends Component {
+  constructor(props) {
+    super(props);
+  }
+  render() {
+    return <h1>Hello World</h1>;
+  }
+}
+export default App;

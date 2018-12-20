@@ -37,7 +37,7 @@ Times, Info, Cast, Photos
 - @babel/preset-env
 - @babel/preset-react
   - single command
-    - npm install webpack webpack-cli babel-loader @babel/core @babel/preset-env @babel/preset-react --save-dev
+    - npm install webpack webpack-cli babel-loader @babel/core @babel/preset-env @babel/preset-react react react-dom --save-dev
 
 3. add this script to the package.json
 
