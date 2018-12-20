@@ -1,6 +1,6 @@
 const exampleData = [
   {
-    //Movie_Id: 100,
+    MovieId: 100,
     Title: 'Bumblebee',
     Theater: 'AMC Loews 34th Street 14',
     Showtimes: {

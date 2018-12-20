@@ -2,6 +2,7 @@ const mongoose = require('mongoose');
 const db = require('./index.js');
 
 const dataSchema = new mongoose.Schema({
+  MovieId: String,
   Title: String,
   Theater: String,
   Showtimes: {
@@ -22,7 +23,7 @@ const dataSchema = new mongoose.Schema({
     Rating: String,
     Genre: String,
     DirectedBy: String,
-    Written_By: String,
+    WrittenBy: String,
     ReleaseDate: String,
     Runtime: String,
     Studio: String

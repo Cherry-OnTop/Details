@@ -65,6 +65,7 @@ adjustData();
 for (var i = 0; i < movieData.length; i++) {
   let movie = movieData[i];
   let newMovie = new MovieSchema({
+    MovieId: movie.MovieId,
     Title: movie.Title,
     Theater: movie.Theater,
     Showtimes: {
@@ -85,7 +86,7 @@ for (var i = 0; i < movieData.length; i++) {
       Rating: movie.Info.Rating,
       Genre: movie.Info.Genre,
       DirectedBy: movie.Info.DirectedBy,
-      Written_By: movie.Info.WrittenBy,
+      WrittenBy: movie.Info.WrittenBy,
       ReleaseDate: movie.Info.ReleaseDate,
       Runtime: movie.Info.Runtime,
       Studio: movie.Info.Studio
