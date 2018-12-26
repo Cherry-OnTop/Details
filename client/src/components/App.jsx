@@ -2,7 +2,8 @@ import React from 'react';
 import { Component } from 'react';
 import axios from 'axios';
 
-import Header from './Header.jsx';
+import Videos from './Videos.jsx';
+import Photos from './Photos.jsx';
 
 class App extends Component {
   constructor(props) {
@@ -27,7 +28,12 @@ class App extends Component {
     this.getMovie();
   }
   render() {
-    return <Header title={this.state.movieData.Title} />;
+    if (this.state.movieData.Title !== undefined) {
+      return <Videos movieData={this.state.movieData} />;
+      //return <Photos movieData={this.state.movieData} />;
+    } else {
+      return <div />;
+    }
   }
 }
 export default App;

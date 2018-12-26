@@ -6,7 +6,7 @@ const videos = require('./youtubeLinks.js');
 const mockarooData = fs.readFileSync('./MOCK_DATA.json');
 const movieData = JSON.parse(mockarooData.toString());
 
-const adjustData = (movieData) => {
+const adjustData = () => {
   let movieId = 100;
 
   const possibleDetails = [
