@@ -7,30 +7,23 @@ const Videos = ({ movieData }) => {
   console.log(movieData);
   let count = 0;
 
-  // const createContent = () => {
-  //   return movieData.Photos.Links.map((photo, i) => {
-  //     if (i < 3) {
-  //       count++;
-  //       return (
-  //         <
-  //       );
-  //     }
-  //   });
-  // };
-
   return (
     <section id="Videos">
-      <Header title={movieData.Title} section={'VIDEOS'} />
-      {movieData.Trailer.Links.map((video, i) => {
-        count++;
-        return (
-          <div className="video_container">
-            <iframe src={video} />
-            <div>{`${movieData.Title} Trailer ${i + 1}`}</div>
-          </div>
-        );
-      })}
-      <Link count={count} section={'Videos'} />
+      <div className="column">
+        <div className="content_panel">
+          <Header title={movieData.Title} section={'VIDEOS'} />
+          {movieData.Trailer.Links.map((video, i) => {
+            count++;
+            return (
+              <div className="video_container">
+                <iframe src={video} />
+                <div>{`${movieData.Title} Trailer ${i + 1}`}</div>
+              </div>
+            );
+          })}
+          <Link count={count} section={'Videos'} />
+        </div>
+      </div>
     </section>
   );
 };
