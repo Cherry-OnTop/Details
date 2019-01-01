@@ -6,21 +6,20 @@ const videos = require('./youtubeLinks.js');
 const mockarooData = fs.readFileSync('./MOCK_DATA.json');
 const movieData = JSON.parse(mockarooData.toString());
 
-let movieId = 100;
-
-const possibleDetails = [
-  'Closed Caption',
-  'Accessibility Devices Available',
-  'Dolby Cinema @ AMC',
-  'Recliner Seats',
-  'Seat Side Service',
-  'Reserved Seating',
-  'Intermission'
-];
-
-let ratings = ['G', 'PG', 'PG-13', 'R'];
-
 const adjustData = () => {
+  let movieId = 100;
+
+  const possibleDetails = [
+    'Closed Caption',
+    'Accessibility Devices Available',
+    'Dolby Cinema @ AMC',
+    'Recliner Seats',
+    'Seat Side Service',
+    'Reserved Seating',
+    'Intermission'
+  ];
+
+  let ratings = ['G', 'PG', 'PG-13', 'R'];
   for (var i = 0; i < movieData.length; i++) {
     const movie = movieData[i];
 
@@ -58,7 +57,12 @@ const adjustData = () => {
       movie.Trailer.links[y] = videos[randomIndexMovie];
     }
   }
+  for (var i = 0; i < movieData.length; i++) {
+    dataToEnterTheDB.push(movieData[i]);
+  }
 };
+
+let dataToEnterTheDB = [];
 
 adjustData();
 
@@ -97,4 +101,5 @@ for (var i = 0; i < movieData.length; i++) {
     if (err) console.log('there was an error: ', err);
   });
 }
-console.log('if no error, seeded');
+
+exports.adjustData = adjustData;

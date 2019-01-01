@@ -1,4 +1,4 @@
-const videos = [
+const videosLinks = [
   'https://www.youtube.com/watch?v=V2J9FHmuz9Y',
   'https://www.youtube.com/watch?v=AJKjbz9AwTY',
   'https://www.youtube.com/watch?v=p4dCgLUuQbc',
@@ -99,5 +99,9 @@ const videos = [
   'https://www.youtube.com/watch?v=oZy3hT-aIT8',
   'https://www.youtube.com/watch?v=RxZfZHe1cis'
 ];
+
+const videos = videosLinks.map((video) => {
+  return video.replace('watch?v=', 'embed/');
+});
 
 module.exports = videos;
