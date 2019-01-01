@@ -12,15 +12,19 @@ const Videos = ({ movieData }) => {
       <div className="column">
         <div className="content_panel">
           <Header title={movieData.Title} section={'VIDEOS'} />
-          {movieData.Trailer.Links.map((video, i) => {
-            count++;
-            return (
-              <div className="video_container">
-                <iframe src={video} />
-                <div>{`${movieData.Title} Trailer ${i + 1}`}</div>
-              </div>
-            );
-          })}
+          <div className="video_list">
+            {movieData.Trailer.Links.map((video, i) => {
+              count++;
+              return (
+                <div className="video_container">
+                  <iframe src={video} />
+                  <div className="video_description">{`${
+                    movieData.Title
+                  } Trailer ${i + 1}`}</div>
+                </div>
+              );
+            })}
+          </div>
           <Link count={count} section={'Videos'} />
         </div>
       </div>

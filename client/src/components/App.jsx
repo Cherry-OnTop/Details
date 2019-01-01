@@ -5,6 +5,7 @@ import axios from 'axios';
 import Videos from './Videos.jsx';
 import Photos from './Photos.jsx';
 import MovieInfo from './MovieInfo.jsx';
+import Times from './Times.jsx';
 
 class App extends Component {
   constructor(props) {
@@ -12,10 +13,11 @@ class App extends Component {
     this.state = {
       movieData: {}
     };
+    this.movieId = document.URL.slice(document.URL.indexOf('?') + 1);
   }
   getMovie(movieId) {
     axios
-      .get(`/movie/101`)
+      .get(this.movieId)
       .then(({ data }) => {
         this.setState({
           movieData: data
@@ -30,13 +32,14 @@ class App extends Component {
   }
   render() {
     if (this.state.movieData.Title !== undefined) {
-      // return (
-      //   <>
-      //     <Videos movieData={this.state.movieData} />
-      //     <Photos movieData={this.state.movieData} />
-      //   </>
-      // );
-      return <MovieInfo movieData={this.state.movieData} />;
+      return (
+        <>
+          <Videos movieData={this.state.movieData} />
+          <Photos movieData={this.state.movieData} />
+          <MovieInfo movieData={this.state.movieData} />
+          <Times movieData={this.state.movieData} />;
+        </>
+      );
     } else {
       return <div />;
     }

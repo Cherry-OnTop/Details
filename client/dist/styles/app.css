@@ -25,6 +25,9 @@ a:hover {
 /* =================
         COLUMN     
    ================= */
+.column {
+  overflow: hidden;
+}
 @media (min-width: 770px) {
   .column {
     width: 770px;
@@ -49,6 +52,7 @@ a:hover {
 @media (max-width: 767px) {
   h2 {
     padding-left: 25px !important;
+    font-family: 'Neusa Next Pro Compact';
   }
 }
 @media (min-width: 768px) {
@@ -84,7 +88,6 @@ a:hover {
   color: #1c1c1c;
   /* float: left; */
   text-transform: uppercase;
-  font-family: 'Neusa Next Pro Compact';
 }
 .panel-heading {
   width: 100% !important;
@@ -97,10 +100,11 @@ a:hover {
 h2 {
   display: block;
   font-size: 1.5em;
-  margin-block-start: 0.83em;
+  /* margin-block-start: 0.83em;
   margin-block-end: 0.83em;
   margin-inline-start: 0px;
-  margin-inline-end: 0px;
+  margin-inline-end: 0px; */
+  font-family: 'Staatliches', cursive;
   font-weight: bold;
   font-weight: 500;
 }
@@ -138,16 +142,43 @@ h2.panel-heading::before {
         VIDEOS      
    ================= */
 
+.video_list {
+  width: 4476px;
+  overflow: hidden;
+}
+
 iframe {
   height: 130px;
   width: 170px;
 }
-
 .video_container {
   height: 165px;
   width: 170px;
   padding: 5px 5px;
   display: inline-block;
+}
+@media (min-width: 768px) {
+}
+
+@media (max-width: 767px) {
+  /* .video_container {
+    width: 257px;
+    height: 100%;
+    padding: 5px 5px;
+    display: inline-block;
+  } */
+}
+
+.video_description {
+  color: #444;
+  display: -webkit-box;
+  font-size: 14px;
+  line-height: 1.2;
+  max-height: 2.4em;
+  padding: 5px 0;
+  text-overflow: ellipsis;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
 }
 
 /* =================
@@ -262,7 +293,7 @@ svg {
 }
 
 .carousel_list {
-  width: 100%;
+  width: 4476px;
   position: relative;
   overflow: hidden;
   display: inline-block;
@@ -287,10 +318,29 @@ img:hover {
   overflow: hidden;
 }
 
+@media (max-width: 767px) {
+  .carousel {
+    overflow: hidden;
+  }
+  .carousel_list {
+    overflow: hidden;
+  }
+  .dots {
+    display: none;
+  }
+  .left {
+    display: none;
+  }
+  .right {
+    display: none;
+  }
+}
+
 /* =================
         MOVIE
         DESCRIPTION      
    ================= */
+
 #movie_description {
   font-family: 'Franklin Gothic Book';
   max-height: 7.5em;
@@ -336,4 +386,80 @@ img:hover {
   vertical-align: top;
   text-align: left;
   width: 77%;
+}
+@media (max-width: 767px) {
+  .information .label {
+    display: inline;
+    font-weight: normal;
+    text-align: left;
+    line-height: 1.2em;
+    padding-right: 5px;
+  }
+  .information .value {
+    display: inline;
+    font-weight: normal;
+    text-align: left;
+    line-height: 1.2em;
+    padding: 0;
+  }
+}
+
+/* =================
+       SHOWTIMES     
+   ================= */
+.location {
+  padding: 0 0 10px;
+  border-bottom: 1px solid #eee;
+}
+.change_location {
+  font-size: 12px;
+  padding-left: 4px;
+}
+.address {
+  padding-top: 10px;
+  display: inline-block;
+}
+.address h2 {
+  margin: 0;
+  padding: 0;
+  padding-right: 5px;
+  font-size: 18px;
+  font-weight: normal;
+  font-family: inherit;
+}
+.showtimes {
+  color: #787878;
+  /* display: inline; */
+  font-size: 14px;
+  padding-top: 10px;
+  width: 100%;
+}
+.times {
+  padding: 5px;
+}
+.showing_type {
+  padding-top: 10px;
+}
+
+.time_button {
+  font-size: 15px;
+  font-weight: normal;
+  line-height: 1.42857143;
+  margin: 2px;
+  min-width: 86px;
+  padding: 6px 12px;
+  text-align: center;
+  touch-action: manipulation;
+  vertical-align: middle;
+  white-space: nowrap;
+  border-radius: 5px;
+  border: none;
+  display: inline-block;
+  background-color: #ffe400 !important;
+  color: #333;
+}
+@media (max-width: 767px) {
+  .time_button {
+    width: auto;
+  }
 }
