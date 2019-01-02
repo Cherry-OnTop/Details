@@ -4,7 +4,6 @@ import Content from './BuildingBlocks/Content.jsx';
 import Link from './BuildingBlocks/Link.jsx';
 
 const Videos = ({ movieData }) => {
-  console.log(movieData);
   let count = 0;
 
   return (
@@ -16,7 +15,7 @@ const Videos = ({ movieData }) => {
             {movieData.Trailer.Links.map((video, i) => {
               count++;
               return (
-                <div className="video_container">
+                <div key={i} className="video_container">
                   <iframe src={video} />
                   <div className="video_description">{`${
                     movieData.Title

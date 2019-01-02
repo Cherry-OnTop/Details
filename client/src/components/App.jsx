@@ -15,9 +15,9 @@ class App extends Component {
     };
     this.movieId = document.URL.slice(document.URL.indexOf('?') + 1);
   }
-  getMovie(movieId) {
+  getMovie() {
     axios
-      .get(this.movieId)
+      .get('http://localhost:9002/movie/' + this.movieId)
       .then(({ data }) => {
         this.setState({
           movieData: data
@@ -41,7 +41,7 @@ class App extends Component {
         </>
       );
     } else {
-      return <div />;
+      return <div>You failed to hit the API</div>;
     }
   }
 }

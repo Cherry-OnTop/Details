@@ -3,7 +3,6 @@ import Header from './BuildingBlocks/Header.jsx';
 import Link from './BuildingBlocks/Link.jsx';
 
 const Times = ({ movieData }) => {
-  console.log(movieData);
   return (
     <section id="Videos">
       <div className="column">
