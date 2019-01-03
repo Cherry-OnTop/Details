@@ -10,6 +10,7 @@ app.use(cors());
 
 //SERVER DATA
 app.get('/movie/:number', (req, res) => {
+  console.log('get request for data');
   const params = req.params.number;
 
   getMovie(params, (err, movie) => {
