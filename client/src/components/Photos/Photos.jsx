@@ -1,9 +1,9 @@
 import React from 'react';
 import { Component } from 'react';
-import Header from './BuildingBlocks/Header.jsx';
-import Content from './BuildingBlocks/Content.jsx';
-import ArrowButton from './BuildingBlocks/SVG.jsx';
-import Link from './BuildingBlocks/Link.jsx';
+import Header from '../BuildingBlocks/Header.jsx';
+import Content from '../BuildingBlocks/Content.jsx';
+import ArrowButton from './SVG.jsx';
+import Link from '../BuildingBlocks/Link.jsx';
 
 class Photos extends Component {
   constructor(props) {
