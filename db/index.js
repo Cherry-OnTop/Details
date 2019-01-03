@@ -1,8 +1,7 @@
 const mongoose = require('mongoose');
 
-let mongoUri = process.env.MONGOURI;
 if (process.env.NODE_ENV === 'production') {
-  mongoose.connect(mongoUri);
+  mongoose.connect(process.env.MONGOURI);
 } else {
   mongoose.connect('mongodb://localhost/movieData');
 }
