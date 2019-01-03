@@ -2,9 +2,9 @@ import React from 'react';
 import { Component } from 'react';
 import axios from 'axios';
 
-import Videos from './Videos.jsx';
+import Videos from './Videos/Videos.jsx';
 import Photos from './Photos/Photos.jsx';
-import MovieInfo from './MovieInfo.jsx';
+import Description from './Description/Description.jsx';
 import Times from './Times.jsx';
 
 class App extends Component {
@@ -36,7 +36,7 @@ class App extends Component {
         <>
           <Videos movieData={this.state.movieData} />
           <Photos movieData={this.state.movieData} />
-          <MovieInfo movieData={this.state.movieData} />
+          <Description movieData={this.state.movieData} />
           <Times movieData={this.state.movieData} />;
         </>
       );

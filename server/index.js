@@ -5,7 +5,7 @@ const getMovie = require('./helper.js');
 const app = express();
 const port = 9002;
 
-app.use(express.static('../client/dist'));
+app.use(express.static('./client/dist'));
 app.use(cors());
 
 //SERVER DATA

@@ -4,7 +4,6 @@ const VideoList = ({ movieData }) => {
   return (
     <div className="video_list">
       {movieData.Trailer.Links.map((video, i) => {
-        count++;
         return (
           <div key={i} className="video_container">
             <iframe src={video} />
