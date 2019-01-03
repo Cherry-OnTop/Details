@@ -2,6 +2,7 @@ import React from 'react';
 import { Component } from 'react';
 import Header from './BuildingBlocks/Header.jsx';
 import Content from './BuildingBlocks/Content.jsx';
+import ArrowButton from './BuildingBlocks/SVG.jsx';
 import Link from './BuildingBlocks/Link.jsx';
 
 class Photos extends Component {
@@ -14,6 +15,7 @@ class Photos extends Component {
     };
     this.count = 0;
     this.handleDotClick = this.handleDotClick.bind(this);
+    this.handleArrowClick = this.handleArrowClick.bind(this);
   }
   renderDots() {
     let output = [];
@@ -117,27 +119,15 @@ class Photos extends Component {
             <Header title={this.props.movieData.Title} section={'PHOTOS'} />
             <ul className="dots">{this.renderDots()}</ul>
             <div className="carousel">
-              <button
-                className="carousel_button left"
-                onClick={() => this.handleArrowClick('left')}
-              >
-                <svg viewBox="0 0 24 24" preserveAspectRatio="xMidYMid meet">
-                  <g>
-                    <path d="M15.41 7.41l-1.41-1.41-6 6 6 6 1.41-1.41-4.58-4.59z" />
-                  </g>
-                </svg>
-              </button>
+              <ArrowButton
+                left={'left'}
+                handleArrowClick={this.handleArrowClick}
+              />
               <div className="carousel_list">{this.renderPage()}</div>
-              <button
-                className="carousel_button right"
-                onClick={() => this.handleArrowClick('right')}
-              >
-                <svg viewBox="0 0 24 24" preserveAspectRatio="xMidYMid meet">
-                  <g>
-                    <path d="M10 6l-1.41 1.41 4.58 4.59-4.58 4.59 1.41 1.41 6-6z" />
-                  </g>
-                </svg>
-              </button>
+              <ArrowButton
+                left={'right'}
+                handleArrowClick={this.handleArrowClick}
+              />
             </div>
             <Link count={10} section={'Photos'} />
           </div>
