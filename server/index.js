@@ -5,12 +5,11 @@ const getMovie = require('./helper.js');
 const app = express();
 const port = 9002;
 
-app.use(express.static('./client/dist'));
+app.use(express.static('../client/dist'));
 app.use(cors());
 
 //SERVER DATA
 app.get('/movie/:number', (req, res) => {
-  console.log('get request for data');
   const params = req.params.number;
 
   getMovie(params, (err, movie) => {
