@@ -5,7 +5,7 @@ import axios from 'axios';
 import Videos from './Videos/Videos.jsx';
 import Photos from './Photos/Photos.jsx';
 import Description from './Description/Description.jsx';
-import Times from './Times.jsx';
+import Times from './Times/Times.jsx';
 
 class App extends Component {
   constructor(props) {
