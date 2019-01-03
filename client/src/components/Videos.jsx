@@ -1,7 +1,7 @@
-import React from 'react';
-import Header from './BuildingBlocks/Header.jsx';
-import Content from './BuildingBlocks/Content.jsx';
-import Link from './BuildingBlocks/Link.jsx';
+import React from "react";
+import Header from "./BuildingBlocks/Header.jsx";
+import Content from "./BuildingBlocks/Content.jsx";
+import Link from "./BuildingBlocks/Link.jsx";
 
 const Videos = ({ movieData }) => {
   let count = 0;
@@ -10,7 +10,7 @@ const Videos = ({ movieData }) => {
     <section id="Videos">
       <div className="column">
         <div className="content_panel">
-          <Header title={movieData.Title} section={'VIDEOS'} />
+          <Header title={movieData.Title} section={"VIDEOS"} />
           <div className="video_list">
             {movieData.Trailer.Links.map((video, i) => {
               count++;
@@ -24,7 +24,7 @@ const Videos = ({ movieData }) => {
               );
             })}
           </div>
-          <Link count={count} section={'Videos'} />
+          <Link count={count} section={"Videos"} />
         </div>
       </div>
     </section>

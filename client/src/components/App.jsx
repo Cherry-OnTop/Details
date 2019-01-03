@@ -1,11 +1,11 @@
-import React from 'react';
-import { Component } from 'react';
-import axios from 'axios';
+import React from "react";
+import { Component } from "react";
+import axios from "axios";
 
-import Videos from './Videos.jsx';
-import Photos from './Photos.jsx';
-import MovieInfo from './MovieInfo.jsx';
-import Times from './Times.jsx';
+import Videos from "./Videos.jsx";
+import Photos from "./Photos.jsx";
+import MovieInfo from "./MovieInfo.jsx";
+import Times from "./Times.jsx";
 
 class App extends Component {
   constructor(props) {
@@ -13,17 +13,17 @@ class App extends Component {
     this.state = {
       movieData: {}
     };
-    this.movieId = document.URL.slice(document.URL.indexOf('?') + 1);
+    this.movieId = document.URL.substr(-3);
   }
   getMovie() {
     axios
-      .get('http://localhost:9002/movie/' + this.movieId)
+      .get("http://localhost:9002/movie/" + this.movieId)
       .then(({ data }) => {
         this.setState({
           movieData: data
         });
       })
-      .catch((err) => {
+      .catch(err => {
         console.log(err);
       });
   }
