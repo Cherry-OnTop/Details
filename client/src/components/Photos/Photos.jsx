@@ -55,7 +55,8 @@ class Photos extends Component {
   }
   handleArrowClick(direction) {
     const activePage = this.state.activePage;
-    const max = Math.floor(this.props.movieData.Photos.Links.length / 4);
+    const max = Math.ceil(this.props.movieData.Photos.Links.length / 4) - 1;
+    console.log(max);
     const min = 0;
     let setTo;
 
