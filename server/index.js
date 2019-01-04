@@ -1,9 +1,13 @@
 const express = require('express');
-const db = require('../db/index.js');
-const getMovie = require('./helper.js');
+const compression = require('compression');
+
 const app = express();
 const port = 9002;
 
+const db = require('../db/index.js');
+const getMovie = require('./helper.js');
+
+app.use(compression());
 app.use(express.static('./client/dist'));
 app.use((req, res, next) => {
   res.header('Access-Control-Allow-Origin', '*');
