@@ -16,7 +16,8 @@ const Dots = ({ links, handleDotClick, setActiveDotClass }) => {
       </li>
     );
   }
-  return output;
+
+  return <ul className="dots">{output}</ul>;
 };
 
 export default Dots;

@@ -1,10 +1,10 @@
 import React from 'react';
 import { Component } from 'react';
-import { CSSTransitionGroup } from 'react-transition-group';
 
 import Header from '../BuildingBlocks/Header.jsx';
-import ArrowButton from './ArrowButton.jsx';
+import Image from './Image.jsx';
 import Dots from './Dots.jsx';
+import Carousel from './Carousel.jsx';
 import Link from '../BuildingBlocks/Link.jsx';
 
 class Photos extends Component {
@@ -16,28 +16,24 @@ class Photos extends Component {
       elements: [],
       sliderDirection: 'right'
     };
-
-    this.count = 0;
+    this.count = this.state.links.length;
     this.handleDotClick = this.handleDotClick.bind(this);
     this.handleArrowClick = this.handleArrowClick.bind(this);
     this.setActiveDotClass = this.setActiveDotClass.bind(this);
+    this.setImageElements = this.setImageElements.bind(this);
   }
 
   createImageElements() {
     const elements = this.state.links.map((link, i) => {
-      return (
-        <div key={i} className="carousel_img">
-          <img src={link} />
-        </div>
-      );
+      return <Image key={i} link={link} />;
     });
     this.setState({
       elements: elements
     });
   }
+
   setImageElements() {
     let start = this.state.activePage * 4;
-    console.log(this.state.activePage);
     let output = [];
     for (var i = start; i < start + 4; i++) {
       output.push(this.state.elements[i]);
@@ -45,53 +41,34 @@ class Photos extends Component {
     return output;
   }
   setActiveDotClass(renderedDot) {
-    if (this.state.activePage == renderedDot) {
-      return 'active_dot';
-    } else {
-      return null;
-    }
+    return this.state.activePage === Number(renderedDot) ? 'active_dot' : null;
   }
 
   handleDotClick(clickedDot, isActive) {
-    let direction;
-    clickedDot < this.state.activePage
-      ? (direction = 'left')
-      : (direction = 'right');
+    const activePage = this.state.activePage;
     if (isActive !== 'active_dot') {
       this.setState({
         activePage: Number(clickedDot),
-        sliderDirection: direction
+        sliderDirection: clickedDot < activePage ? 'left' : 'right'
       });
     }
   }
   handleArrowClick(direction) {
+    const activePage = this.state.activePage;
     const max = Math.floor(this.props.movieData.Photos.Links.length / 4);
     const min = 0;
+    let setTo;
+
     if (direction === 'left') {
-      if (this.state.activePage === min) {
-        this.setState({
-          activePage: max,
-          sliderDirection: direction
-        });
-      } else {
-        this.setState({
-          activePage: this.state.activePage - 1,
-          sliderDirection: direction
-        });
-      }
+      setTo = activePage === min ? max : activePage - 1;
     } else if (direction === 'right') {
-      if (this.state.activePage === max) {
-        this.setState({
-          activePage: min,
-          sliderDirection: direction
-        });
-      } else {
-        this.setState({
-          activePage: this.state.activePage + 1,
-          sliderDirection: direction
-        });
-      }
+      setTo = activePage === max ? min : activePage + 1;
     }
+
+    this.setState({
+      activePage: setTo,
+      sliderDirection: direction
+    });
   }
   componentDidMount() {
     this.createImageElements();
@@ -102,37 +79,19 @@ class Photos extends Component {
         <div className="column">
           <div className="content_panel">
             <Header title={this.props.movieData.Title} section={'PHOTOS'} />
-            <ul className="dots">
-              <Dots
-                links={this.state.links}
-                handleDotClick={this.handleDotClick}
-                setActiveDotClass={this.setActiveDotClass}
-              />
-            </ul>
-            <div className="carousel">
-              <ArrowButton
-                left={'left'}
-                handleArrowClick={this.handleArrowClick}
-              />
-
-              <div>
-                <div className="carousel_list">
-                  <CSSTransitionGroup
-                    transitionName={`${this.state.sliderDirection}slider`}
-                    transitionEnterTimeout={350}
-                    transitionLeaveTimeout={350}
-                  >
-                    {this.setImageElements()}
-                  </CSSTransitionGroup>
-                </div>
-              </div>
-
-              <ArrowButton
-                right={'right'}
-                handleArrowClick={this.handleArrowClick}
-              />
-            </div>
-            <Link count={10} section={'Photos'} />
+            <Dots
+              links={this.state.links}
+              handleDotClick={this.handleDotClick}
+              setActiveDotClass={this.setActiveDotClass}
+            />
+            <Carousel
+              handleArrowClick={this.handleArrowClick}
+              left={'left'}
+              right={'right'}
+              sliderDirection={this.state.sliderDirection}
+              setImageElements={this.setImageElements}
+            />
+            <Link count={this.count} section={'Photos'} />
           </div>
         </div>
       </section>
