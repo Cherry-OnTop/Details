@@ -17,7 +17,7 @@ class App extends Component {
   }
   getMovie() {
     axios
-      .get('http://localhost:9002/movie/' + this.movieId)
+      .get('/movie/' + this.movieId)
       .then(({ data }) => {
         this.setState({
           movieData: data
