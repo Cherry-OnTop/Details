@@ -45,8 +45,10 @@ const adjustData = () => {
     movie.Info['Runtime'] = runtime + ' min';
 
     //PHOTOS
+
     for (var k = 0; k < movie.Photos.links.length; k++) {
-      movie.Photos.links[k] = 'https://picsum.photos/300/300/?random';
+      const rand = Math.floor(Math.random() * 10000);
+      movie.Photos.links[k] = `https://picsum.photos/300/300/?random?${rand}`;
     }
     movie.Cast[0].Photo = 'https://picsum.photos/300/300/?random';
     movie.Cast[1].Photo = 'https://picsum.photos/300/300/?random';
