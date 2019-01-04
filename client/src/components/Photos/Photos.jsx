@@ -1,7 +1,8 @@
 import React from 'react';
 import { Component } from 'react';
+import { CSSTransitionGroup } from 'react-transition-group';
+
 import Header from '../BuildingBlocks/Header.jsx';
-import Content from '../BuildingBlocks/Content.jsx';
 import ArrowButton from './SVG.jsx';
 import Link from '../BuildingBlocks/Link.jsx';
 
@@ -10,12 +11,15 @@ class Photos extends Component {
     super(props);
     this.state = {
       links: props.movieData.Photos.Links,
-      activePage: 1,
-      pages: []
+      activePage: 0,
+      elements: [],
+      sliderDirection: 'right'
     };
+
     this.count = 0;
     this.handleDotClick = this.handleDotClick.bind(this);
     this.handleArrowClick = this.handleArrowClick.bind(this);
+    this.setActiveDotClass = this.setActiveDotClass.bind(this);
   }
   renderDots() {
     let output = [];
@@ -27,7 +31,7 @@ class Photos extends Component {
               this.handleDotClick(target.id, target.classList.value)
             }
             key={i}
-            id={i + 1}
+            id={i}
             className={this.setActiveDotClass(i)}
           />
         </li>
@@ -35,41 +39,29 @@ class Photos extends Component {
     }
     return output;
   }
-  renderPage() {
-    let page = this.state.pages[this.state.activePage - 1];
-
-    return page === undefined
-      ? null
-      : page.map((link, i) => {
-          return (
-            <div key={i} className="carousel_img">
-              <img src={link} />
-            </div>
-          );
-        });
-  }
-  setPages() {
-    let photos = this.props.movieData.Photos.Links;
-    let pageList = [];
-    let page = [];
-    for (var i = 0; i <= photos.length; i++) {
-      if (page.length < 4) {
-        page.push(photos[i]);
-      } else {
-        pageList.push(page);
-        page = [];
-        page.push(photos[i]);
-      }
-      if (i === photos.length) {
-        pageList.push(page);
-      }
-    }
+  createImageElements() {
+    const elements = this.state.links.map((link, i) => {
+      return (
+        <div key={i} className="carousel_img">
+          <img src={link} />
+        </div>
+      );
+    });
     this.setState({
-      pages: pageList
+      elements: elements
     });
   }
+  setImageElements() {
+    let start = this.state.activePage * 4;
+    console.log(this.state.activePage);
+    let output = [];
+    for (var i = start; i < start + 4; i++) {
+      output.push(this.state.elements[i]);
+    }
+    return output;
+  }
   setActiveDotClass(renderedDot) {
-    if (this.state.activePage == renderedDot + 1) {
+    if (this.state.activePage == renderedDot) {
       return 'active_dot';
     } else {
       return null;
@@ -77,39 +69,48 @@ class Photos extends Component {
   }
 
   handleDotClick(clickedDot, isActive) {
+    let direction;
+    clickedDot < this.state.activePage
+      ? (direction = 'left')
+      : (direction = 'right');
     if (isActive !== 'active_dot') {
       this.setState({
-        activePage: clickedDot
+        activePage: Number(clickedDot),
+        sliderDirection: direction
       });
     }
   }
   handleArrowClick(direction) {
-    const max = Math.floor(this.props.movieData.Photos.Links.length / 4 + 1);
-    const min = 1;
+    const max = Math.floor(this.props.movieData.Photos.Links.length / 4);
+    const min = 0;
     if (direction === 'left') {
       if (this.state.activePage === min) {
         this.setState({
-          activePage: max
+          activePage: max,
+          sliderDirection: direction
         });
       } else {
         this.setState({
-          activePage: this.state.activePage - 1
+          activePage: this.state.activePage - 1,
+          sliderDirection: direction
         });
       }
     } else if (direction === 'right') {
       if (this.state.activePage === max) {
         this.setState({
-          activePage: min
+          activePage: min,
+          sliderDirection: direction
         });
       } else {
         this.setState({
-          activePage: this.state.activePage + 1
+          activePage: this.state.activePage + 1,
+          sliderDirection: direction
         });
       }
     }
   }
   componentDidMount() {
-    this.setPages();
+    this.createImageElements();
   }
   render() {
     return (
@@ -123,9 +124,21 @@ class Photos extends Component {
                 left={'left'}
                 handleArrowClick={this.handleArrowClick}
               />
-              <div className="carousel_list">{this.renderPage()}</div>
+
+              <div>
+                <div className="carousel_list">
+                  <CSSTransitionGroup
+                    transitionName={`${this.state.sliderDirection}slider`}
+                    transitionEnterTimeout={350}
+                    transitionLeaveTimeout={350}
+                  >
+                    {this.setImageElements()}
+                  </CSSTransitionGroup>
+                </div>
+              </div>
+
               <ArrowButton
-                left={'right'}
+                right={'right'}
                 handleArrowClick={this.handleArrowClick}
               />
             </div>

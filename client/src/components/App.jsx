@@ -37,11 +37,11 @@ class App extends Component {
           <Videos movieData={this.state.movieData} />
           <Photos movieData={this.state.movieData} />
           <Description movieData={this.state.movieData} />
-          <Times movieData={this.state.movieData} />;
+          <Times movieData={this.state.movieData} />
         </>
       );
     } else {
-      return <div>You failed to hit the API</div>;
+      return <div />;
     }
   }
 }
