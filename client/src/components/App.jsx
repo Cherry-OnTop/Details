@@ -13,11 +13,13 @@ class App extends Component {
     this.state = {
       movieData: {}
     };
+    this.API_URL =
+      process.env.NODE_ENV === 'production' ? process.env.API_URL : '/movie/';
     this.movieId = document.URL.substr(-3);
   }
   getMovie() {
     axios
-      .get('http://localhost:9002/movie/' + this.movieId)
+      .get(this.API_URL + this.movieId)
       .then(({ data }) => {
         this.setState({
           movieData: data
