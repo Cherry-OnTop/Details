@@ -3,7 +3,8 @@ import { Component } from 'react';
 import { CSSTransitionGroup } from 'react-transition-group';
 
 import Header from '../BuildingBlocks/Header.jsx';
-import ArrowButton from './SVG.jsx';
+import ArrowButton from './ArrowButton.jsx';
+import Dots from './Dots.jsx';
 import Link from '../BuildingBlocks/Link.jsx';
 
 class Photos extends Component {
@@ -21,24 +22,7 @@ class Photos extends Component {
     this.handleArrowClick = this.handleArrowClick.bind(this);
     this.setActiveDotClass = this.setActiveDotClass.bind(this);
   }
-  renderDots() {
-    let output = [];
-    for (var i = 0; i < this.state.links.length / 4; i++) {
-      output.push(
-        <li key={i}>
-          <button
-            onClick={({ target }) =>
-              this.handleDotClick(target.id, target.classList.value)
-            }
-            key={i}
-            id={i}
-            className={this.setActiveDotClass(i)}
-          />
-        </li>
-      );
-    }
-    return output;
-  }
+
   createImageElements() {
     const elements = this.state.links.map((link, i) => {
       return (
@@ -118,7 +102,13 @@ class Photos extends Component {
         <div className="column">
           <div className="content_panel">
             <Header title={this.props.movieData.Title} section={'PHOTOS'} />
-            <ul className="dots">{this.renderDots()}</ul>
+            <ul className="dots">
+              <Dots
+                links={this.state.links}
+                handleDotClick={this.handleDotClick}
+                setActiveDotClass={this.setActiveDotClass}
+              />
+            </ul>
             <div className="carousel">
               <ArrowButton
                 left={'left'}
