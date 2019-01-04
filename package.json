@@ -21,7 +21,6 @@
   "homepage": "https://github.com/Themyscira19/Details#readme",
   "dependencies": {
     "axios": "^0.18.0",
-    "cors": "^2.8.5",
     "express": "^4.16.4",
     "mongodb-memory-server": "^2.9.0",
     "mongoose": "^5.4.0",
