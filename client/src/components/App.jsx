@@ -14,10 +14,13 @@ class App extends Component {
       movieData: {}
     };
     this.API_URL =
-      process.env.NODE_ENV === 'production' ? process.env.API_URL : '/movie/';
+      process.env.NODE_ENV === 'production'
+        ? process.env.API_URL
+        : 'http://localhost:9002/movie/';
     this.movieId = document.URL.substr(-3);
   }
   getMovie() {
+    console.log('api url', this.API_URL);
     axios
       .get(this.API_URL + this.movieId)
       .then(({ data }) => {
@@ -43,7 +46,7 @@ class App extends Component {
         </>
       );
     } else {
-      return <div />;
+      return <div>Hello</div>;
     }
   }
 }
