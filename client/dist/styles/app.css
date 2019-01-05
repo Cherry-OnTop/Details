@@ -195,11 +195,11 @@ ul {
   /* height: 30px; */
 }
 .dots {
+  padding: 0;
   padding-right: 30px;
   list-style: none;
   display: block;
   text-align: right;
-  padding: 0;
   /* top: -26px; */
   bottom: auto;
   margin: 0;
