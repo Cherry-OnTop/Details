@@ -2,6 +2,7 @@ import React from 'react';
 
 const Link = ({ count, section }) => {
   const linkStyle = {
+    paddingRight: '30px',
     color: 'rgb(57, 118, 220)',
     float: 'right !important',
     textDecoration: 'none',
@@ -13,8 +14,8 @@ const Link = ({ count, section }) => {
     margin: '0px',
     cursor: 'pointer',
     textAlign: 'right',
-    paddingTop: '10px',
-    paddingBottom: '10px',
+    paddingTop: '5px',
+    paddingBottom: '5px',
     display: 'block'
   };
   return (
