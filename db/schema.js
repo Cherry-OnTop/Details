@@ -27,8 +27,7 @@ const dataSchema = new mongoose.Schema({
     ReleaseDate: String,
     Runtime: String,
     Studio: String
-  },
-  Cast: [{ Name: String, Photo: String }, { Name: String, Photo: String }]
+  }
 });
 
 let MovieSchema = mongoose.model('Movie', dataSchema);
