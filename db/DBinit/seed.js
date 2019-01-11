@@ -1,107 +1,50 @@
-const fs = require('fs');
-const mongoose = require('mongoose');
-const MovieSchema = require('../schema.js');
-const videos = require('./youtubeLinks.js');
+const fs = require("fs");
+const mongoose = require("mongoose");
+const MovieSchema = require("../schema.js");
+// const videos = require("./youtubeLinks.js");
 
-const mockarooData = fs.readFileSync('./MOCK_DATA.json');
-const movieData = JSON.parse(mockarooData.toString());
+var movieData = fs.readFileSync("./data.json");
+// console.log(movieData);
+var parsedMovieData = JSON.parse(movieData);
+// console.log(parsedMovieData)
 
-const adjustData = () => {
-  let movieId = 100;
+var count = 101;
 
-  const possibleDetails = [
-    'Closed Caption',
-    'Accessibility Devices Available',
-    'Dolby Cinema @ AMC',
-    'Recliner Seats',
-    'Seat Side Service',
-    'Reserved Seating',
-    'Intermission'
-  ];
-
-  let ratings = ['G', 'PG', 'PG-13', 'R'];
-  for (var i = 0; i < movieData.length; i++) {
-    const movie = movieData[i];
-
-    //MOVIE ID
-    movie['MovieId'] = movieId++;
-
-    //THEATER DETAILS
-    let amountOfDetails = Math.floor(
-      Math.random() * (possibleDetails.length - 2) + 2
-    );
-    let details = [];
-    for (var x = 0; x < amountOfDetails; x++) {
-      details.push(possibleDetails[x]);
-    }
-    movie['TheaterDetails'] = details;
-
-    //MOVIE RATING
-    let randomIndexRating = Math.floor(Math.random() * ratings.length);
-    movie.Info['Rating'] = ratings[randomIndexRating];
-
-    //MOVIE RUNTIME
-    let runtime = Math.floor(Math.random() * (130 - 85) + 85);
-    movie.Info['Runtime'] = runtime + ' min';
-
-    //PHOTOS
-
-    for (var k = 0; k < movie.Photos.links.length; k++) {
-      const rand = Math.floor(Math.random() * 10000);
-      movie.Photos.links[k] = `https://picsum.photos/300/300/?random?${rand}`;
-    }
-    movie.Cast[0].Photo = 'https://picsum.photos/300/300/?random';
-    movie.Cast[1].Photo = 'https://picsum.photos/300/300/?random';
-
-    //MOVIES
-    for (var y = 0; y < movie.Trailer.links.length; y++) {
-      let randomIndexMovie = Math.floor(Math.random() * videos.length);
-      movie.Trailer.links[y] = videos[randomIndexMovie];
-    }
+var assignNewMovieID = function() {
+  for (var i = 0; i < parsedMovieData.length; i++) {
+    parsedMovieData[i]['_id'] = count;
+    parsedMovieData[i]['MovieId'] = count.toString();
+    count++;
   }
-  for (var i = 0; i < movieData.length; i++) {
-    dataToEnterTheDB.push(movieData[i]);
-  }
-};
-
-let dataToEnterTheDB = [];
-
-adjustData();
-
-for (var i = 0; i < movieData.length; i++) {
-  let movie = movieData[i];
-  let newMovie = new MovieSchema({
-    MovieId: movie.MovieId,
-    Title: movie.Title,
-    Theater: movie.Theater,
-    Showtimes: {
-      Standard: movie.Showtimes.Standard,
-      Imax: movie.Showtimes.Imax
-    },
-    TheaterDetails: {
-      Standard: movie.TheaterDetails
-    },
-    Trailer: {
-      Links: movie.Trailer.links
-    },
-    Photos: {
-      Links: movie.Photos.links
-    },
-    Info: {
-      Description: movie.Info.Description,
-      Rating: movie.Info.Rating,
-      Genre: movie.Info.Genre,
-      DirectedBy: movie.Info.DirectedBy,
-      WrittenBy: movie.Info.WrittenBy,
-      ReleaseDate: movie.Info.ReleaseDate,
-      Runtime: movie.Info.Runtime,
-      Studio: movie.Info.Studio
-    },
-    Cast: movie.Cast
-  });
-  newMovie.save((err) => {
-    if (err) console.log('there was an error: ', err);
-  });
+  console.log('count:', count);
 }
 
-exports.adjustData = adjustData;
+//splice dataToEnterTheDB into chunks to insert into DB
+var start = 1;
+// var batchSize = 10000;
+var end = 1000;
+
+var storeBatch = () => {
+  // dataToEnterTheDB = [];
+  // generateData();
+  assignNewMovieID();
+  MovieSchema.collection.insertMany(parsedMovieData, {ordered: false}, (err, data) => {
+    if (err) {
+      console.log(err)
+    } else if (start < end) {
+      // console.log('start', start, 'end', end)
+      console.log(parsedMovieData)
+      start++;
+      storeBatch();
+    } else {
+      console.timeEnd("dbinsert");
+    }
+  });
+};
+
+console.time("dbinsert");
+storeBatch();
+
+// in terminal, cd into DBinit
+// run following command
+// node seed.js to seed database
