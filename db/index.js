@@ -13,7 +13,7 @@ const serverOptions = {
 if (process.env.NODE_ENV === "production") {
   mongoose.connect(process.env.MONGOURI);
 } else {
-  var mongodbUri = "mongodb://localhost/movieData?keepAlive=true&poolSize=30&autoReconnect=true&socketTimeoutMS=360000&connectTimeoutMS=360000";
+  var mongodbUri = "mongodb://localhost:27017/movieData?keepAlive=true&poolSize=30&autoReconnect=true&socketTimeoutMS=360000&connectTimeoutMS=360000";
   mongoose.connect(
     mongodbUri
   );
