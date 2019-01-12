@@ -4,9 +4,10 @@ const serverOptions = {
   socketTimeoutMS: 500000,
   connectTimeoutMS: 500000,
   useNewUrlParser: true,
-  keepAlive: true,
+  keepAlive: 300000,
   poolSize: 30,
-  autoReconnect: true
+  autoReconnect: true,
+  reconnectTries: 30000
 };
 
 if (process.env.NODE_ENV === "production") {
