@@ -2,6 +2,7 @@ const mongoose = require('mongoose');
 const db = require('./index.js');
 
 const dataSchema = new mongoose.Schema({
+  _id: {type: Number, unique: true},
   MovieId: String,
   Title: String,
   Theater: String,

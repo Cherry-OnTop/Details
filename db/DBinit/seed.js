@@ -16,7 +16,7 @@ var assignNewMovieID = function() {
     parsedMovieData[i]['MovieId'] = count.toString();
     count++;
   }
-  console.log('count:', count);
+  // console.log('count:', count);
 }
 
 //splice dataToEnterTheDB into chunks to insert into DB
@@ -25,15 +25,13 @@ var start = 1;
 var end = 1000;
 
 var storeBatch = () => {
-  // dataToEnterTheDB = [];
-  // generateData();
   assignNewMovieID();
   MovieSchema.collection.insertMany(parsedMovieData, {ordered: false}, (err, data) => {
     if (err) {
       console.log(err)
     } else if (start < end) {
       // console.log('start', start, 'end', end)
-      console.log(parsedMovieData)
+      // console.log(parsedMovieData)
       start++;
       storeBatch();
     } else {
