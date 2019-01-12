@@ -71,7 +71,7 @@ var generateData = function() {
     for (var j = 0; j < movieData.length; j++) {
       var movie = JSON.parse(JSON.stringify(movieData[j]));
       var newMovie = new MovieSchema({
-        _id: 'going to replace',
+        _id: count,
         MovieId: 'going to replace',
         Title: movie.Title,
         Theater: movie.Theater,

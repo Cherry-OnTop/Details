@@ -16,7 +16,7 @@ var assignNewMovieID = function() {
     parsedMovieData[i]['MovieId'] = count.toString();
     count++;
   }
-  // console.log('count:', count);
+  console.log('count:', count);
 }
 
 //splice dataToEnterTheDB into chunks to insert into DB
