@@ -2,8 +2,11 @@ const mongoose = require("mongoose");
 
 const serverOptions = {
   socketTimeoutMS: 500000,
-    connectTimeoutMS: 500000,
-  useNewUrlParser: true
+  connectTimeoutMS: 500000,
+  useNewUrlParser: true,
+  keepAlive: true,
+  poolSize: 30,
+  autoReconnect: true
 };
 
 if (process.env.NODE_ENV === "production") {
