@@ -1,10 +1,10 @@
 const mongoose = require("mongoose");
 
 const serverOptions = {
-  socketTimeoutMS: 500000,
-  connectTimeoutMS: 500000,
+  socketTimeoutMS: 30000,
+  connectTimeoutMS: 30000,
   useNewUrlParser: true,
-  keepAlive: 300000,
+  keepAlive: true,
   poolSize: 30,
   autoReconnect: true,
   reconnectTries: 30000
@@ -13,9 +13,10 @@ const serverOptions = {
 if (process.env.NODE_ENV === "production") {
   mongoose.connect(process.env.MONGOURI);
 } else {
-  var mongodbUri = "mongodb://127.0.0.1:27017/movieData?keepAlive=true&poolSize=30&autoReconnect=true&socketTimeoutMS=360000&connectTimeoutMS=360000";
+  var mongodbUri = "mongodb://127.0.0.1:27017/movieData";
   mongoose.connect(
-    mongodbUri
+    mongodbUri,
+    serverOptions
   );
 }
 
