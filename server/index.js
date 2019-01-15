@@ -2,7 +2,7 @@ const express = require('express');
 const compression = require('compression');
 
 const app = express();
-const port = 9002;
+const port = 9008;
 
 const db = require('../db/index.js');
 const getMovie = require('./helper.js');
