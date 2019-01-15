@@ -14,7 +14,7 @@ class App extends Component {
       movieData: {}
     };
     this.API_URL =
-      'http://ec2-18-218-63-15.us-east-2.compute.amazonaws.com/movie/';
+      'http://ec2-3-17-68-77.us-east-2.compute.amazonaws.com/movie/';
     // process.env.NODE_ENV === 'production'
     //   ? process.env.API_URL
     //   : 'http://localhost:9002/movie/';
@@ -25,7 +25,7 @@ class App extends Component {
     axios
       .get(this.API_URL + this.movieId)
       .then(({ data }) => {
-        console.log(data)
+        console.log('this is the data from getMovie', data)
         this.setState({
           movieData: data
         });
