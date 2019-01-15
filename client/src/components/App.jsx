@@ -25,6 +25,7 @@ class App extends Component {
     axios
       .get(this.API_URL + this.movieId)
       .then(({ data }) => {
+        console.log(data)
         this.setState({
           movieData: data
         });
