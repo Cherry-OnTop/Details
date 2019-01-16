@@ -18,7 +18,7 @@ class App extends Component {
     // process.env.NODE_ENV === 'production'
     //   ? process.env.API_URL
     //   : 'http://localhost:9002/movie/';
-    this.movieId = document.URL.split('/')[4];
+    this.movieId = document.URL.split('/')[1];
   }
   getMovie() {
     console.log('api url', this.API_URL);
