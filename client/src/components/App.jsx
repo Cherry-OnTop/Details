@@ -23,7 +23,7 @@ class App extends Component {
   getMovie() {
     console.log('api url', this.API_URL);
     console.log('movieId', this.movieId);
-    console.log('movieId split', this.movieId.split('/'))
+    console.log('documentURL', document.URL)
     axios
       .get(`/movie/${this.movieId}`)
       .then(({ data }) => {
