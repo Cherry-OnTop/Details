@@ -40,6 +40,7 @@ class App extends Component {
     console.log('api url', this.API_URL);
     console.log('movieId', this.movieId);
     console.log(window.location.pathname)
+    console.log(document.URL)
     this.getMovie();
   }
   render() {
