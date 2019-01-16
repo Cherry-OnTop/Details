@@ -39,6 +39,7 @@ class App extends Component {
     console.log('hey component mounted!');
     console.log('api url', this.API_URL);
     console.log('movieId', this.movieId);
+    console.log(window.location.pathname.substr(1))
     this.getMovie();
   }
   render() {
