@@ -18,7 +18,7 @@ class App extends Component {
     // process.env.NODE_ENV === 'production'
     //   ? process.env.API_URL
     //   : 'http://localhost:9002/movie/';
-    this.movieId = document.URL.substr(-3);
+    this.movieId = document.URL.split('/')[4];
   }
   getMovie() {
     console.log('api url', this.API_URL);
@@ -36,11 +36,6 @@ class App extends Component {
       });
   }
   componentDidMount() {
-    console.log('hey component mounted!');
-    console.log('api url', this.API_URL);
-    console.log('movieId', this.movieId);
-    console.log(window.location.pathname)
-    console.log(document.URL)
     this.getMovie();
   }
   render() {
