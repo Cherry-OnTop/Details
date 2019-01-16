@@ -10,10 +10,11 @@ const serverOptions = {
   reconnectTries: 30000
 };
 
+//change mongodbUri to "mongodb://127.0.0.1:27017/movieData" to insert to local database 
 if (process.env.NODE_ENV === "production") {
   mongoose.connect(process.env.MONGOURI);
 } else {
-  var mongodbUri = "mongodb://127.0.0.1:27017/movieData";
+  var mongodbUri = "mongodb://18.191.232.101:27017/movieData";
   mongoose.connect(
     mongodbUri,
     serverOptions
