@@ -22,6 +22,7 @@ class App extends Component {
   }
   getMovie() {
     console.log('api url', this.API_URL);
+    console.log('movieId', this.movieId);
     axios
       .get(this.API_URL + this.movieId)
       .then(({ data }) => {
