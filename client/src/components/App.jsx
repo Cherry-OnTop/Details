@@ -36,6 +36,9 @@ class App extends Component {
       });
   }
   componentDidMount() {
+    console.log('hey component mounted!');
+    console.log('api url', this.API_URL);
+    console.log('movieId', this.movieId);
     this.getMovie();
   }
   render() {
