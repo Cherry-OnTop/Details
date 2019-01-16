@@ -24,7 +24,7 @@ class App extends Component {
     console.log('api url', this.API_URL);
     console.log('movieId', this.movieId);
     axios
-      .get('/movie/' + this.movieId)
+      .get(`/movie/${this.movieId}`)
       .then(({ data }) => {
         console.log('this is the data from getMovie', data)
         this.setState({

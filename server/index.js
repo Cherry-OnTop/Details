@@ -1,5 +1,6 @@
 const express = require('express');
 const compression = require('compression');
+const path = require('path');
 
 const app = express();
 const port = 9008;
@@ -11,7 +12,7 @@ app.use((req, res, next) => {
   // console.log(req);
   next();
 });
-app.use(express.static('./client/dist'));
+app.use('/:movieId', express.static(path.join(__dirname, '../client/dist')));
 app.use(compression());
 app.use((req, res, next) => {
   res.header('Access-Control-Allow-Origin', '*');
