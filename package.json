@@ -4,7 +4,7 @@
   "description": "List movie times, info, cast, and photos",
   "main": "index.js",
   "scripts": {
-    "start": "nodemon server/index.js",
+    "start": "node server/index.js",
     "react-dev": "webpack -d --watch",
     "test": "jest",
     "dev": "concurrently \"node server/index.js\" \"npm run react-dev\"",
@@ -22,6 +22,7 @@
   },
   "homepage": "https://github.com/Themyscira19/Details#readme",
   "dependencies": {
+    "artillery": "^1.6.0-2",
     "axios": "^0.18.0",
     "compression": "^1.7.3",
     "express": "^4.16.4",
