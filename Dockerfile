@@ -15,4 +15,4 @@ COPY . .
 
 EXPOSE 9008
 
-CMD [ "npm", "start" ]
+CMD [ "npm", "run", "dev" ]
