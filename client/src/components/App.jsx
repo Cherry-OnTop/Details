@@ -14,18 +14,25 @@ class App extends Component {
       movieData: {}
     };
     this.API_URL =
-      'ec2-3-17-32-68.us-east-2.compute.amazonaws.com/movie/';
+      'http://localhost:9008/movie/';
     // process.env.NODE_ENV === 'production'
     //   ? process.env.API_URL
     //   : 'http://localhost:9002/movie/';
-    this.movieId = document.URL.split('/')[3];
+
+    this.movieId = window.location.search.split('?')[1]
+    // this.movieId = document.URL.substr(-3);
+    // this.movieId = document.URL.split('/')[3];
   }
   getMovie() {
-    console.log('api url', this.API_URL);
-    console.log('movieId', this.movieId);
+    console.log('window location', window.location.search)
+    // console.log('api url', this.API_URL);
+    // console.log('movieId', this.movieId);
     console.log('documentURL', document.URL)
+    console.log('window location', this.movieId)
+
+    // .get(`/movie/${this.movieId}`)
     axios
-      .get(`/movie/${this.movieId}`)
+      .get(this.API_URL + this.movieId)
       .then(({ data }) => {
         console.log('this is the data from getMovie', data)
         this.setState({

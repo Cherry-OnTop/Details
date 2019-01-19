@@ -15,7 +15,7 @@ const serverOptions = {
 if (process.env.NODE_ENV === "production") {
   mongoose.connect(process.env.MONGOURI);
 } else {
-  var mongodbUri = "mongodb://18.191.232.101:27017/movieData";
+  var mongodbUri = "mongodb://3.17.32.68:27017/movieData";
   mongoose.connect(
     mongodbUri,
     serverOptions

@@ -12,7 +12,10 @@ app.use((req, res, next) => {
   // console.log(req);
   next();
 });
-app.use('/:movieId', express.static(path.join(__dirname, '../client/dist')));
+
+// '/:movieId', 
+
+app.use(express.static(path.join(__dirname, '../client/dist')));
 app.use(compression());
 app.use((req, res, next) => {
   res.header('Access-Control-Allow-Origin', '*');
@@ -26,12 +29,13 @@ app.use((req, res, next) => {
 //SERVER DATA
 app.get('/movie/:number', (req, res) => {
   const params = req.params.number;
-  console.log(params);
+  // console.log(params);
   getMovie(params, (err, movie) => {
     if (err) {
       console.log(err);
       res.send(500);
     } else {
+      console.log(movie);
       res.send(movie);
     }
   });

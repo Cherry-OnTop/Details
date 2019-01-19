@@ -1,9 +1,9 @@
 config:
-  target: 'http://ec2-3-17-32-68.us-east-2.compute.amazonaws.com:9008'
+  target: 'http://localhost:9008'
   processor: "./artilleryfunc.js"
   phases:
     - duration: 60
-      arrivalRate: 10
+      arrivalRate: 300
   defaults:
     headers:
       x-my-service-auth: '987401838271002188298567'
