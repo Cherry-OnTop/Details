@@ -14,7 +14,7 @@ class App extends Component {
       movieData: {}
     };
     this.API_URL =
-      'http://localhost:9008/movie/';
+      'http://18.217.66.137/movie/';
     // process.env.NODE_ENV === 'production'
     //   ? process.env.API_URL
     //   : 'http://localhost:9002/movie/';
