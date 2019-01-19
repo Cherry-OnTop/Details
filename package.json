@@ -26,7 +26,6 @@
     "axios": "^0.18.0",
     "compression": "^1.7.3",
     "express": "^4.16.4",
-    "faker": "^4.1.0",
     "mongoose": "^5.4.0",
     "react-transition-group": "^1.2.1"
   },
