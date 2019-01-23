@@ -15,8 +15,11 @@ app.use((req, res, next) => {
 
 // '/:movieId', 
 
-app.use(express.static(path.join(__dirname, '../client/dist')));
+// app.use(express.static(path.join(__dirname, '../client/dist')));
+app.use(express.static('./client/dist'));
+
 app.use(compression());
+
 app.use((req, res, next) => {
   res.header('Access-Control-Allow-Origin', '*');
   res.header(
