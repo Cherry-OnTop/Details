@@ -53,7 +53,7 @@ app.get('/movie/:number', (req, res) => {
   client.get(params, (err, data) => {
     if(!data) {
       getMovie(params, (err, movie) => {
-        client.setex(params, 6000, JSON.stringify(movie), (err, info) => {
+        client.setex(params, 60, JSON.stringify(movie), (err, info) => {
           console.log(info);
         })
         if (err) {
