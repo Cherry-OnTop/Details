@@ -3,7 +3,7 @@ config:
   processor: "./artilleryfunc.js"
   phases:
     - duration: 60
-      arrivalRate: 300
+      arrivalRate: 200
   defaults:
     headers:
       x-my-service-auth: '987401838271002188298567'
