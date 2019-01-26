@@ -2,3 +2,5 @@ node_modules/
 client/dist/bundle.js
 package-lock.json
 db/DBinit/data.json
+newrelic.js
+redispassword.js

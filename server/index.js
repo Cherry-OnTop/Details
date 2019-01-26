@@ -1,9 +1,11 @@
+require('newrelic');
 const express = require('express');
 const compression = require('compression');
 const path = require('path');
 const redis = require('redis');
+const redispassword = require('../redispassword.js').redispassword;
 
-const client = redis.createClient({host: '18.221.137.55', port: 6379});
+const client = redis.createClient({host: '18.221.137.55', port: 6379, password: redispassword});
 
 client.on('connect', function() {
   console.log('Redis client connected');
