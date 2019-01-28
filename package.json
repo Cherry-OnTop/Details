@@ -5,9 +5,9 @@
   "main": "index.js",
   "scripts": {
     "start": "node server/index.js",
-    "react-dev": "webpack -p",
+    "react-dev": "webpack -d --watch",
     "test": "jest",
-    "dev": "concurrently \"node server/index.js\" \"npm run react-dev\"",
+    "dev": "concurrently \"node server/index.js\" \"npm run prestartp\"",
     "prestartp": "webpack -p",
     "startp": "pm2 start server/index.js"
   },
