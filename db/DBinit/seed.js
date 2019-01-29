@@ -1,12 +1,8 @@
 const fs = require("fs");
-const mongoose = require("mongoose");
 const MovieSchema = require("../schema.js");
-// const videos = require("./youtubeLinks.js");
 
 var movieData = fs.readFileSync("./data.json");
-// console.log(movieData);
 var parsedMovieData = JSON.parse(movieData);
-// console.log(parsedMovieData)
 
 var count = 101;
 
@@ -21,7 +17,6 @@ var assignNewMovieID = function() {
 
 //splice dataToEnterTheDB into chunks to insert into DB
 var start = 1;
-// var batchSize = 10000;
 var end = 1000;
 
 var storeBatch = () => {
@@ -30,8 +25,6 @@ var storeBatch = () => {
     if (err) {
       console.log(err)
     } else if (start < end) {
-      // console.log('start', start, 'end', end)
-      // console.log(parsedMovieData)
       start++;
       storeBatch();
     } else {
