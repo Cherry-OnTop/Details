@@ -4,7 +4,7 @@
   "description": "List movie times, info, cast, and photos",
   "main": "index.js",
   "scripts": {
-    "start": "node server/index.js",
+    "start": "nodemon server/index.js",
     "react-dev": "webpack -d --watch",
     "test": "jest",
     "dev": "concurrently \"node server/index.js\" \"npm run prestartp\"",

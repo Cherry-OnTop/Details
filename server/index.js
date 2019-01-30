@@ -1,7 +1,6 @@
 require("newrelic");
 const express = require("express");
 const compression = require("compression");
-const path = require("path");
 const redis = require("redis");
 const redispassword = require("../redispassword.js").redispassword;
 
@@ -22,11 +21,9 @@ client.on("error", function(err) {
 const app = express();
 const port = 9008;
 
-const db = require("../db/index.js");
 const getMovie = require("./helper.js");
 
 app.use((req, res, next) => {
-  // console.log(req);
   next();
 });
 
@@ -52,8 +49,13 @@ app.get("/movie/:number", (req, res) => {
       res.send(500);
     } else if (!data) {
       getMovie(params, (err, movie) => {
+        console.log(movie)
         client.setex(params, 60, JSON.stringify(movie), (err, info) => {
-          console.log(info);
+          if (err) {
+            console.log(err);
+          } else {
+            console.log(info);
+          }
         });
         if (err) {
           console.log(err);
